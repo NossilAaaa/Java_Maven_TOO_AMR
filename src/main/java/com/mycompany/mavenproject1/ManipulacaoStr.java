@@ -61,19 +61,28 @@ public class ManipulacaoStr {
     
     private void testeSplit2(String param)
     {
-        String[] meuV;
-
-        meuV = param.split(",");
-
-        //System.out.println("length: "+meuV.length);
-        for (int i = 0; i < meuV.length; i++) {
-               try{
-                   Integer item = Integer.parseInt(meuV[i]);
-                   System.out.println(item);
-               }catch(NumberFormatException e){
-                   System.out.println("-");
-               }
-        }
+        param = param.trim();//.trim, tira os espaçoes em brancos antes e depois caso exista;
+        
+        String[] meuVetor;        
+        meuVetor = param.split(",");
+        if(meuVetor.length == 0){
+            System.out.println("vet possui zero partes");
+        }else{
+            for(String p : meuVetor ){
+                System.out.println("p:" +p);
+                System.out.println("Indice do espaço: "+p.indexOf(" "));//indexOf retorna um int;
+                System.out.println("Indice do }: "+p.indexOf("}"));
+                /*
+                System.out.println("Valor: "+p.substring(
+                                                        p.indexOf(" ")+1,
+                                                        p.indexOf("}")));*/
+                String subP= p.substring(
+                                            p.indexOf(" ")+1,
+                                            p.indexOf("}"));
+                Integer valor = Integer.parseInt(subP);
+                System.out.println(valor);
+            }
+        }    
     }
 
     public static void main(String[] args) {
